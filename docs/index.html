@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verticals — AI YouTube Shorts Generator</title>
+    <meta name="description" content="Open source AI pipeline that turns a topic into a published YouTube Short in 3 minutes.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        ink: '#111111',
+                        dim: '#555555',
+                        muted: '#888888',
+                        subtle: '#F5F5F5',
+                        line: '#E5E5E5',
+                        accent: '#4F46E5',
+                        'accent-hover': '#4338CA',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'DM Sans', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+
+<body class="bg-white text-ink antialiased">
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-line">
+        <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+            <a href="#" class="font-heading font-bold text-lg tracking-tight">Verticals</a>
+            <div class="hidden md:flex items-center gap-8 text-sm text-dim">
+                <a href="#features" class="hover:text-ink transition">Features</a>
+                <a href="#how" class="hover:text-ink transition">How It Works</a>
+                <a href="#pricing" class="hover:text-ink transition">Pricing</a>
+            </div>
+            <a href="https://github.com/emreozyoruk/youtube-shorts-pipeline" target="_blank"
+               class="text-sm font-medium text-dim hover:text-ink transition flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-3xl">
+                <p class="text-sm font-medium text-accent mb-4 tracking-wide uppercase">Open Source</p>
+                <h1 class="font-heading text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
+                    One topic.<br>One click.<br>Published Short.
+                </h1>
+                <p class="text-xl text-dim leading-relaxed mb-8 max-w-xl">
+                    An AI pipeline that researches your topic, writes a script, generates visuals, records voiceover, burns subtitles, and uploads to YouTube. Fully automated.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-12">
+                    <a href="https://github.com/emreozyoruk/youtube-shorts-pipeline" target="_blank"
+                       class="bg-ink text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-ink/90 transition">
+                        Get Started
+                    </a>
+                    <a href="#how" class="border border-line px-6 py-3 rounded-lg text-sm font-medium text-dim hover:border-ink/20 transition">
+                        See How It Works
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terminal -->
+            <div class="bg-ink rounded-xl p-6 max-w-2xl">
+                <div class="flex items-center gap-1.5 mb-4">
+                    <div class="w-2.5 h-2.5 rounded-full bg-white/20"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-white/20"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-white/20"></div>
+                </div>
+                <code class="text-sm leading-loose text-white/70 block">
+                    <span class="text-white/40">$</span> python3 gui.py<br>
+                    <span class="text-white/40">Niche →</span> <span class="text-white">science</span><br>
+                    <span class="text-white/40">Script →</span> <span class="text-white">Claude</span><br>
+                    <span class="text-white/40">Images →</span> <span class="text-white">DALL-E 3 (3 frames)</span><br>
+                    <span class="text-white/40">Voice →</span> <span class="text-white">tr-TR-AhmetNeural</span><br>
+                    <span class="text-white/40">Subs →</span> <span class="text-white">Whisper word-level</span><br>
+                    <span class="text-green-400">Done</span> <span class="text-white/50">https://youtu.be/xyz</span>
+                </code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Numbers -->
+    <section class="py-16 border-y border-line">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="font-heading text-3xl font-bold tracking-tight">~3 min</div>
+                    <div class="text-sm text-muted mt-1">Per video</div>
+                </div>
+                <div>
+                    <div class="font-heading text-3xl font-bold tracking-tight">$0.11</div>
+                    <div class="text-sm text-muted mt-1">Average cost</div>
+                </div>
+                <div>
+                    <div class="font-heading text-3xl font-bold tracking-tight">15</div>
+                    <div class="text-sm text-muted mt-1">Content niches</div>
+                </div>
+                <div>
+                    <div class="font-heading text-3xl font-bold tracking-tight">300+</div>
+                    <div class="text-sm text-muted mt-1">Voice options</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="mb-16 reveal">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-3">Everything you need. Nothing you don't.</h2>
+                <p class="text-dim text-lg">Seven pipeline stages. One button.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-12">
+                <div class="reveal">
+                    <h3 class="font-heading text-lg font-bold mb-2">AI Script Writing</h3>
+                    <p class="text-dim leading-relaxed">Claude, GPT-4, or Gemini writes hook-driven scripts optimized for your niche. DuckDuckGo research ensures factual accuracy.</p>
+                </div>
+                <div class="reveal">
+                    <h3 class="font-heading text-lg font-bold mb-2">DALL-E 3 Visuals</h3>
+                    <p class="text-dim leading-relaxed">Three cinematic b-roll frames per video. Ken Burns zoom and pan animation. Visual style adapts to your content niche.</p>
+                </div>
+                <div class="reveal">
+                    <h3 class="font-heading text-lg font-bold mb-2">Voice Preview</h3>
+                    <p class="text-dim leading-relaxed">300+ Edge TTS voices across 9 languages. Listen to any voice before generating. Switch between male, female, and regional accents.</p>
+                </div>
+                <div class="reveal">
+                    <h3 class="font-heading text-lg font-bold mb-2">Burned Subtitles</h3>
+                    <p class="text-dim leading-relaxed">Whisper generates word-level timestamps. Subtitles are rendered directly into the video. No viewer action needed.</p>
+                </div>
+                <div class="reveal">
+                    <h3 class="font-heading text-lg font-bold mb-2">Auto-Detect Niche</h3>
+                    <p class="text-dim leading-relaxed">Type any topic. GPT-4o-mini classifies it into the right niche. Script tone, visual style, music mood, and thumbnail strategy adapt automatically.</p>
+                </div>
+                <div class="reveal">
+                    <h3 class="font-heading text-lg font-bold mb-2">YouTube Upload</h3>
+                    <p class="text-dim leading-relaxed">OAuth2 authenticated upload. Title, description, tags, captions, and thumbnail included. Choose public, private, or unlisted.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="py-24 bg-subtle">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="mb-16 reveal">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-3">How it works</h2>
+                <p class="text-dim text-lg">Seven stages, fully automated.</p>
+            </div>
+
+            <div class="max-w-2xl space-y-8">
+                <div class="flex gap-5 reveal">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center text-sm font-bold">1</div>
+                    <div>
+                        <h3 class="font-heading font-bold mb-1">Research</h3>
+                        <p class="text-dim text-sm">DuckDuckGo searches your topic. Extracts facts, statistics, and context.</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 reveal">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center text-sm font-bold">2</div>
+                    <div>
+                        <h3 class="font-heading font-bold mb-1">Script</h3>
+                        <p class="text-dim text-sm">AI writes a 60-second hook-driven script with niche-specific tone and CTA.</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 reveal">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center text-sm font-bold">3</div>
+                    <div>
+                        <h3 class="font-heading font-bold mb-1">Images</h3>
+                        <p class="text-dim text-sm">DALL-E 3 generates 3 cinematic frames. Ken Burns animation applied.</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 reveal">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center text-sm font-bold">4</div>
+                    <div>
+                        <h3 class="font-heading font-bold mb-1">Voiceover</h3>
+                        <p class="text-dim text-sm">Edge TTS records natural voiceover in your chosen language and voice.</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 reveal">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center text-sm font-bold">5</div>
+                    <div>
+                        <h3 class="font-heading font-bold mb-1">Captions</h3>
+                        <p class="text-dim text-sm">Whisper transcribes with word-level timing. Burned directly into the video.</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 reveal">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center text-sm font-bold">6</div>
+                    <div>
+                        <h3 class="font-heading font-bold mb-1">Assemble</h3>
+                        <p class="text-dim text-sm">ffmpeg and moviepy merge frames, audio, captions, and music into a 9:16 Short.</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 reveal">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-white flex items-center justify-center text-sm font-bold">7</div>
+                    <div>
+                        <h3 class="font-heading font-bold mb-1">Upload</h3>
+                        <p class="text-dim text-sm">Published to YouTube with full metadata, thumbnail, and captions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Niches -->
+    <section class="py-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="mb-12 reveal">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-3">15 content niches</h2>
+                <p class="text-dim text-lg">Each niche shapes script tone, visual style, music mood, and thumbnails.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 reveal">
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Tech</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Gaming</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Finance</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Fitness</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Cooking</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Travel</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">True Crime</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Science</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Politics</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Entertainment</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Sports</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Fashion</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Education</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Motivation</span>
+                <span class="px-4 py-2 rounded-full border border-line text-sm text-dim">Comedy</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="py-24 bg-subtle">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="mb-12 reveal">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-3">9 languages</h2>
+                <p class="text-dim text-lg">Generate Shorts in any language. Preview voices before recording.</p>
+            </div>
+            <div class="flex flex-wrap gap-4 reveal">
+                <div class="px-5 py-3 bg-white rounded-lg border border-line text-sm"><span class="text-muted mr-2">TR</span>Türkçe</div>
+                <div class="px-5 py-3 bg-white rounded-lg border border-line text-sm"><span class="text-muted mr-2">EN</span>English</div>
+                <div class="px-5 py-3 bg-white rounded-lg border border-line text-sm"><span class="text-muted mr-2">HI</span>Hindi</div>
+                <div class="px-5 py-3 bg-white rounded-lg border border-line text-sm"><span class="text-muted mr-2">ES</span>Español</div>
+                <div class="px-5 py-3 bg-white rounded-lg border border-line text-sm"><span class="text-muted mr-2">PT</span>Português</div>
+                <div class="px-5 py-3 bg-white rounded-lg border border-line text-sm"><span class="text-muted mr-2">DE</span>Deutsch</div>
+                <div class="px-5 py-3 bg-white rounded-lg border border-line text-sm"><span class="text-muted mr-2">FR</span>Français</div>
+                <div class="px-5 py-3 bg-white rounded-lg border border-line text-sm"><span class="text-muted mr-2">JA</span>Japanese</div>
+                <div class="px-5 py-3 bg-white rounded-lg border border-line text-sm"><span class="text-muted mr-2">KO</span>Korean</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="mb-16 reveal">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-3">Pricing</h2>
+                <p class="text-dim text-lg">Pay-per-video API costs. The tool itself is free.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-3xl">
+                <div class="border border-line rounded-xl p-8 reveal">
+                    <div class="text-sm text-muted font-medium mb-4">Free</div>
+                    <div class="font-heading text-3xl font-bold mb-1">$0</div>
+                    <div class="text-sm text-muted mb-6">per video</div>
+                    <ul class="space-y-2.5 text-sm text-dim">
+                        <li>Ollama (local LLM)</li>
+                        <li>Pexels stock footage</li>
+                        <li>Edge TTS voices</li>
+                        <li>All 15 niches</li>
+                    </ul>
+                </div>
+                <div class="border-2 border-ink rounded-xl p-8 relative reveal">
+                    <div class="absolute -top-3 left-6 bg-ink text-white text-xs font-medium px-2.5 py-0.5 rounded-full">Recommended</div>
+                    <div class="text-sm text-muted font-medium mb-4">Standard</div>
+                    <div class="font-heading text-3xl font-bold mb-1">~$0.11</div>
+                    <div class="text-sm text-muted mb-6">per video</div>
+                    <ul class="space-y-2.5 text-sm text-dim">
+                        <li>Claude AI scripts</li>
+                        <li>DALL-E 3 images</li>
+                        <li>Edge TTS voices</li>
+                        <li>YouTube auto-upload</li>
+                    </ul>
+                </div>
+                <div class="border border-line rounded-xl p-8 reveal">
+                    <div class="text-sm text-muted font-medium mb-4">Premium</div>
+                    <div class="font-heading text-3xl font-bold mb-1">~$0.15</div>
+                    <div class="text-sm text-muted mb-6">per video</div>
+                    <ul class="space-y-2.5 text-sm text-dim">
+                        <li>Claude AI scripts</li>
+                        <li>DALL-E 3 images</li>
+                        <li>ElevenLabs voices</li>
+                        <li>Premium thumbnails</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 border-t border-line">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-2xl reveal">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-6">Start in 60 seconds.</h2>
+
+                <div class="bg-ink rounded-xl p-5 mb-8">
+                    <code class="text-sm text-white/70 leading-loose block">
+                        <span class="text-white/40">$</span> git clone https://github.com/emreozyoruk/youtube-shorts-pipeline.git<br>
+                        <span class="text-white/40">$</span> pip install -r requirements.txt<br>
+                        <span class="text-white/40">$</span> python3 gui.py
+                    </code>
+                </div>
+
+                <a href="https://github.com/emreozyoruk/youtube-shorts-pipeline" target="_blank"
+                   class="inline-flex items-center gap-2 bg-ink text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-ink/90 transition">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-line py-8">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <span class="font-heading font-bold text-sm">Verticals</span>
+            <span class="text-sm text-muted">
+                Built by <a href="https://github.com/emreozyoruk" target="_blank" class="text-ink hover:underline">Emre Ozyoruk</a>
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
